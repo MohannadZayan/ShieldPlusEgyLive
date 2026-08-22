@@ -253,9 +253,20 @@ Two environment variables drive the build; the workflow sets both from
    `src/lib/asset.ts`. **Use `asset()` for any new reference to a file in `public/`,**
    or it will 404 on Pages while working fine locally.
 
-There is no server, so `redirects()` in `next.config.ts` would be ignored. The `/` →
-`/en/` hop is `public/index.html`, a static page that picks a locale from
-`navigator.language` with a `<meta refresh>` fallback.
+#### The "/" → "/en/" hop exists twice, on purpose
+
+No route owns `/`, so it needs redirecting — but each mechanism only covers one
+environment. **Keep both:**
+
+- **`redirects()` in `next.config.ts`** — covers `next dev` and any Node host.
+  Delete it and `localhost:3000` 404s.
+- **`public/index.html`** — covers the static export, where there is no server to
+  redirect. It picks a locale from `navigator.language` with a `<meta refresh>`
+  fallback, using relative paths so it works at a domain root or in a subfolder.
+
+`next build` prints *"Specified redirects will not automatically work with output:
+export"* three times. **That warning is expected** — the export uses the HTML file
+instead. Do not "fix" it by deleting the redirect.
 
 #### Custom domain
 

@@ -35,9 +35,20 @@ const nextConfig: NextConfig = {
    */
   trailingSlash: true,
 
-  // NOTE: `redirects()` is deliberately absent — it needs a server and is
-  // silently ignored by `output: "export"`. The "/" -> "/en/" hop is handled
-  // by public/index.html instead.
+  /**
+   * The "/" -> "/en/" hop is handled TWICE, on purpose, because each mechanism
+   * only covers one environment:
+   *
+   *  - This redirect runs under `next dev` (and on a Node host such as
+   *    Vercel). Without it, visiting localhost:3000 just 404s, since no route
+   *    owns "/".
+   *  - `public/index.html` covers the static export, where there is no server
+   *    to perform a redirect. Next prints a warning that these redirects are
+   *    not exported — that warning is expected and safe to ignore.
+   */
+  async redirects() {
+    return [{ source: "/", destination: "/en", permanent: false }];
+  },
 };
 
 export default nextConfig;
