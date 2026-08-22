@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { AppointmentForm } from "@/components/AppointmentForm";
 import { ClosingCta } from "@/components/ClosingCta";
 import { ShieldIcon, SunIcon } from "@/components/Icons";
+import { MediaTile } from "@/components/MediaTile";
 import { Reveal } from "@/components/Reveal";
 import {
   FeaturePill,
@@ -83,7 +84,8 @@ export default async function ThermalPage({
 
       <Section>
         <div className="grid gap-9 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
-          {/* Product panel */}
+          {/* Left column: the product, then the work itself */}
+          <div className="flex flex-col gap-5">
           <Reveal className="rounded-2xl border border-border bg-card p-7 sm:p-9">
             <h2 className="font-display text-[24px] font-semibold tracking-wide uppercase">
               {THERMAL.name[locale]}
@@ -115,6 +117,22 @@ export default async function ThermalPage({
               {t.cta.appointment}
             </WhatsAppButton>
           </Reveal>
+
+          {/* Film going onto glass — the distinction this page is making.
+              The alt text stops at what is visible: it does not claim this
+              particular car was fitted with Eagle CM8060+. */}
+          <MediaTile
+            src="/media/tint-windscreen.jpeg"
+            alt={
+              locale === "ar"
+                ? "فني بيركّب فيلم على الزجاج الأمامي لسيارة ويسحب المياه بالمعصفة داخل المركز"
+                : "An installer squeegeeing wet-applied film across a car's windscreen in the studio"
+            }
+            locale={locale}
+            delay={90}
+            className="!aspect-[4/5]"
+          />
+          </div>
 
           {/* PPF vs tint explainer */}
           <div className="flex flex-col gap-6">

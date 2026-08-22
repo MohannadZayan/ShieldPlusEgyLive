@@ -160,6 +160,7 @@ fill space:
 | `ppf-application.mp4` | Film sheet being laid over a Škoda | **Home hero** + PPF page |
 | `hero-poster.jpeg` | Still lifted from the frame above | Hero poster / LCP image |
 | `ppf-squeegee.mp4` | Film squeegeed down over the bumper | PPF page |
+| `tint-windscreen.jpeg` | Film being squeegeed onto a windscreen | Thermal insulation page |
 | `washing-rinse.mp4` | Car being rinsed down | Washing page |
 | `washing-microfibre.jpeg` | Microfibre drying a wet window | Washing page |
 | `polishing-machine.jpeg` | Rotary polisher on a bonnet | Polishing page |
