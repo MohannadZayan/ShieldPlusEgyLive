@@ -50,10 +50,15 @@ export const BUSINESS = {
   },
 
   /**
-   * PRE-LAUNCH: replace with the real production domain once it is connected.
-   * Used for canonical URLs, Open Graph and the sitemap.
+   * Drives canonical URLs, Open Graph and the sitemap.
+   *
+   * The deploy workflow sets NEXT_PUBLIC_SITE_URL to wherever the site is
+   * actually being published, so canonicals always match the live address.
+   *
+   * PRE-LAUNCH: once the client's real domain is connected, replace the
+   * fallback below with it.
    */
-  siteUrl: "https://shieldplusegy.com",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://shieldplusegy.com",
 } as const;
 
 export type Locale = "en" | "ar";

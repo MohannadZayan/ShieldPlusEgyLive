@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ShieldPlusEGY</title>
+
+    <!--
+      ROOT LANGUAGE HOP
+      ------------------------------------------------------------------------
+      Every page lives under /en/ or /ar/, so "/" has no content of its own.
+      On Vercel this was a server redirect, but a static host can't do that —
+      so this file stands in.
+
+      Next does not generate a root page, which means this file survives the
+      export untouched and gets served at "/".
+
+      Paths are RELATIVE so it works whether the site is at a domain root or in
+      a GitHub Project Pages subfolder.
+    -->
+
+    <!-- Fallback for no-JS: always lands somewhere valid. -->
+    <meta http-equiv="refresh" content="0; url=./en/" />
+
+    <link rel="canonical" href="./en/" />
+    <meta name="robots" content="noindex" />
+
+    <script>
+      // Prefer the visitor's own language when we have it, before the meta
+      // refresh fires. `replace` keeps "/" out of the back-button history.
+      (function () {
+        var lang = (navigator.language || "en").toLowerCase();
+        var target = lang.indexOf("ar") === 0 ? "./ar/" : "./en/";
+        window.location.replace(target);
+      })();
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #0a0c10;
+        color: #98a2b3;
+        font-family: system-ui, sans-serif;
+        text-align: center;
+      }
+      a {
+        color: #3b76f0;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Redirecting to <a href="./en/">ShieldPlusEGY</a> &middot;
+      <a href="./ar/">العربية</a>
+    </p>
+  </body>
+</html>

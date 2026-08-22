@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { Locale } from "@/lib/business";
+import { asset } from "@/lib/asset";
 import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/routes";
 import { waGeneral } from "@/lib/whatsapp";
@@ -24,7 +25,7 @@ export function Hero({ locale }: { locale: Locale }) {
           from this same clip, so there's no visual jump when it starts. */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/media/hero-poster.jpeg"
+          src={asset("/media/hero-poster.jpeg")}
           alt=""
           fill
           priority
@@ -32,8 +33,8 @@ export function Hero({ locale }: { locale: Locale }) {
           className="object-cover object-center"
         />
         <video
-          src="/media/ppf-application.mp4"
-          poster="/media/hero-poster.jpeg"
+          src={asset("/media/ppf-application.mp4")}
+          poster={asset("/media/hero-poster.jpeg")}
           className="absolute inset-0 h-full w-full object-cover object-center"
           autoPlay
           muted

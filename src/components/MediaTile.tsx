@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { Locale } from "@/lib/business";
+import { asset } from "@/lib/asset";
 import { getDict } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 
@@ -45,8 +46,8 @@ export function MediaTile({
     >
       {isVideo ? (
         <video
-          src={src}
-          poster={poster}
+          src={asset(src)}
+          poster={poster ? asset(poster) : undefined}
           className="h-full w-full object-cover"
           autoPlay
           muted
@@ -58,7 +59,9 @@ export function MediaTile({
         </video>
       ) : (
         <Image
-          src={src}
+          // `unoptimized` images bypass the optimizer route, and with it the
+          // automatic basePath prefix — so this needs asset() too.
+          src={asset(src)}
           alt={alt ?? ""}
           width={width ?? 960}
           height={height ?? 1280}

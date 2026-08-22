@@ -220,22 +220,60 @@ change appears to need an env var, that is a signal it may be outside package sc
 
 ```bash
 npm run dev     # local, http://localhost:3000
-npm run build   # production build — must pass before deploying
+npm run build   # static export into out/ — must pass before deploying
 npm run lint    # must be clean
 ```
 
-Deploy to Vercel from the `main` branch of `MohannadZayan/ShieldPlusEgyLive`. Framework
-preset **Next.js**; no environment variables; no build overrides.
+The site is a **static export** (`output: "export"` in `next.config.ts`). It has no
+backend, so nothing is lost by exporting — every page was already prerendered. The
+build writes plain HTML/CSS/JS to `out/`, which any static host can serve.
 
-### Custom domain checklist
+### Live on GitHub Pages
 
-1. Add the domain in Vercel → Settings → Domains.
-2. Point DNS at Vercel; HTTPS is issued automatically.
-3. **Update `BUSINESS.siteUrl` in `src/lib/business.ts`** and redeploy — canonicals,
-   Open Graph and the sitemap all read from it.
-4. Submit `/sitemap.xml` to Google Search Console.
+Pushing to `main` runs `.github/workflows/deploy.yml`, which lints, builds, sanity-
+checks the export and publishes it. Pages must be set to **Source: GitHub Actions**
+(Settings → Pages) — the default "Deploy from a branch" will not work.
+
+Two environment variables drive the build; the workflow sets both from
+`actions/configure-pages`, so they are correct automatically:
+
+| Variable | Purpose | Project Pages | Custom domain |
+|---|---|---|---|
+| `NEXT_PUBLIC_BASE_PATH` | URL prefix | `/ShieldPlusEgyLive` | *(empty)* |
+| `NEXT_PUBLIC_SITE_URL` | canonicals, OG, sitemap | `https://<user>.github.io/ShieldPlusEgyLive` | `https://theirdomain.com` |
+
+#### Two traps this build already works around
+
+1. **`_next/` and Jekyll.** GitHub Pages runs Jekyll by default, which silently drops
+   any directory starting with `_` — that is the entire JS/CSS bundle. `public/.nojekyll`
+   disables it. **Never delete that file.**
+2. **basePath and raw asset URLs.** Next rewrites `<Link href>` for the base path, but
+   it does *not* rewrite `<video src>`, `poster`, or — because `images.unoptimized` is
+   on — `next/image` sources either. Every one of those goes through `asset()` in
+   `src/lib/asset.ts`. **Use `asset()` for any new reference to a file in `public/`,**
+   or it will 404 on Pages while working fine locally.
+
+There is no server, so `redirects()` in `next.config.ts` would be ignored. The `/` →
+`/en/` hop is `public/index.html`, a static page that picks a locale from
+`navigator.language` with a `<meta refresh>` fallback.
+
+#### Custom domain
+
+1. Settings → Pages → Custom domain, enter it. This writes a `CNAME` file.
+2. Point DNS at GitHub (`A` records to their four IPs, or a `CNAME` to
+   `<user>.github.io`).
+3. Tick **Enforce HTTPS** once the certificate is issued.
+4. Set `NEXT_PUBLIC_BASE_PATH` to empty in the workflow and update the
+   `BUSINESS.siteUrl` fallback in `src/lib/business.ts`.
+5. Submit `/sitemap.xml` to Google Search Console.
 
 Do not describe the domain as connected until it actually resolves over HTTPS.
+
+### Vercel
+
+Still supported — a static export deploys there unchanged. Import the repo, framework
+preset **Next.js**, and leave both environment variables unset so the site builds at
+the domain root.
 
 ## 11. Security
 

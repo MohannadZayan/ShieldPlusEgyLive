@@ -4,6 +4,10 @@ import { BUSINESS } from "@/lib/business";
 import { LOCALES } from "@/lib/i18n";
 import { ROUTES } from "@/lib/routes";
 
+/** Required by `output: "export"`: emit this once at build time as a file. */
+export const dynamic = "force-static";
+
+
 /**
  * Generated from `ROUTES`, so a new page appears in the sitemap automatically.
  * Each URL carries hreflang alternates for its counterpart locale.
