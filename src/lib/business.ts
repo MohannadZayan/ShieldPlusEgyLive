@@ -52,11 +52,9 @@ export const BUSINESS = {
   /**
    * Drives canonical URLs, Open Graph and the sitemap.
    *
-   * The deploy workflow sets NEXT_PUBLIC_SITE_URL to wherever the site is
-   * actually being published, so canonicals always match the live address.
-   *
-   * PRE-LAUNCH: once the client's real domain is connected, replace the
-   * fallback below with it.
+   * LIVE: the site is served at the root of shieldplusegy.com. The deploy
+   * workflow sets NEXT_PUBLIC_SITE_URL to the same value; this fallback keeps
+   * a local `npm run build` producing identical URLs.
    */
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://shieldplusegy.com",
 } as const;

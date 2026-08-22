@@ -35,15 +35,23 @@ jobs:
       - name: Lint
         run: npx eslint src --max-warnings=0
 
+      # Kept because deploy-pages expects Pages to be configured for this run.
+      # Its `base_path` / `origin` outputs are deliberately NOT used — see below.
       - uses: actions/configure-pages@v5
         id: pages
 
       - name: Build static site
         env:
-          # Project Pages serve from /<repo>/, so the app needs that prefix.
-          # `configure-pages` works it out; it is empty for a custom domain.
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
-          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.origin }}${{ steps.pages.outputs.base_path }}
+          # The site is served at the ROOT of the custom domain, so there is no
+          # URL prefix. Empty is correct — do not reintroduce a base path.
+          #
+          # This was previously `steps.pages.outputs.base_path`, which reported
+          # "/ShieldPlusEgyLive" even after the custom domain was live. Every
+          # asset URL was then prefixed with a folder that does not exist at the
+          # domain root, so the CSS, JS, fonts and images all 404'd and the page
+          # rendered unstyled. Declaring the target explicitly removes that guess.
+          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_SITE_URL: https://shieldplusegy.com
         run: npm run build
 
       - name: Fail if the export looks wrong
@@ -53,9 +61,27 @@ jobs:
           test -f out/ar/index.html   || { echo "::error::out/ar/index.html missing"; exit 1; }
           test -f out/.nojekyll       || { echo "::error::out/.nojekyll missing — Jekyll will strip /_next and the CSS/JS will 404"; exit 1; }
           test -d out/media           || { echo "::error::out/media missing — photos and video will 404"; exit 1; }
+
+          # Regression guard. The repo name must never appear in a URL: at the
+          # domain root it resolves to a folder that isn't there, which is
+          # exactly the failure this check exists to prevent.
+          if grep -rlE '(href|src|poster)="/ShieldPlusEgyLive/' out >/dev/null 2>&1; then
+            echo "::error::Asset URLs are prefixed with /ShieldPlusEgyLive/ but the site deploys at the domain root. Check NEXT_PUBLIC_BASE_PATH."
+            grep -rhoE '(href|src|poster)="/ShieldPlusEgyLive/[^"]*"' out | sort -u | head
+            exit 1
+          fi
+
+          # Assets must be root-absolute and actually present on disk.
+          missing=0
+          for url in $(grep -rhoE '(href|src)="/_next/[^"]*"' out | sed -E 's/.*="([^"]*)"/\1/' | sort -u); do
+            [ -f "out$url" ] || { echo "::error::referenced but not exported: $url"; missing=1; }
+          done
+          [ "$missing" = "0" ] || exit 1
+
           echo "Export looks good:"
           echo "  $(find out -name '*.html' | wc -l) HTML pages"
           echo "  $(ls out/media | wc -l) media files"
+          echo "  $(grep -rhoE '(href|src)="/_next/[^"]*"' out | sort -u | wc -l) unique /_next assets, all present"
 
       - uses: actions/upload-pages-artifact@v3
         with:

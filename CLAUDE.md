@@ -234,13 +234,26 @@ Pushing to `main` runs `.github/workflows/deploy.yml`, which lints, builds, sani
 checks the export and publishes it. Pages must be set to **Source: GitHub Actions**
 (Settings → Pages) — the default "Deploy from a branch" will not work.
 
-Two environment variables drive the build; the workflow sets both from
-`actions/configure-pages`, so they are correct automatically:
+**Live at `https://shieldplusegy.com` — served at the domain ROOT.**
 
-| Variable | Purpose | Project Pages | Custom domain |
-|---|---|---|---|
-| `NEXT_PUBLIC_BASE_PATH` | URL prefix | `/ShieldPlusEgyLive` | *(empty)* |
-| `NEXT_PUBLIC_SITE_URL` | canonicals, OG, sitemap | `https://<user>.github.io/ShieldPlusEgyLive` | `https://theirdomain.com` |
+Two environment variables drive the build, set explicitly in the workflow:
+
+| Variable | Value | Purpose |
+|---|---|---|
+| `NEXT_PUBLIC_BASE_PATH` | *(empty)* | URL prefix. Empty = domain root. |
+| `NEXT_PUBLIC_SITE_URL` | `https://shieldplusegy.com` | canonicals, Open Graph, sitemap |
+
+> **Do not set `NEXT_PUBLIC_BASE_PATH` to `/ShieldPlusEgyLive`.** These were once
+> derived from `actions/configure-pages`, which kept reporting the repo path
+> `/ShieldPlusEgyLive` after the custom domain went live. Every asset URL was then
+> prefixed with a folder that does not exist at the domain root, so the CSS, JS,
+> fonts and images all 404'd and the site rendered as unstyled HTML. The values are
+> now declared explicitly, and the deploy workflow fails the build if the repo name
+> ever reappears in an asset URL.
+>
+> A base path is only needed if the custom domain is removed and the site goes back
+> to `https://<user>.github.io/ShieldPlusEgyLive/`. While the domain is configured,
+> that old URL simply 301s to it.
 
 #### Two traps this build already works around
 
@@ -268,17 +281,16 @@ environment. **Keep both:**
 export"* three times. **That warning is expected** — the export uses the HTML file
 instead. Do not "fix" it by deleting the redirect.
 
-#### Custom domain
+#### Custom domain — already done
 
-1. Settings → Pages → Custom domain, enter it. This writes a `CNAME` file.
-2. Point DNS at GitHub (`A` records to their four IPs, or a `CNAME` to
-   `<user>.github.io`).
-3. Tick **Enforce HTTPS** once the certificate is issued.
-4. Set `NEXT_PUBLIC_BASE_PATH` to empty in the workflow and update the
-   `BUSINESS.siteUrl` fallback in `src/lib/business.ts`.
-5. Submit `/sitemap.xml` to Google Search Console.
+`shieldplusegy.com` is configured in Settings → Pages, DNS is live at Namecheap, and
+HTTPS is issued. Nothing here needs redoing. The remaining SEO step is submitting
+`https://shieldplusegy.com/sitemap.xml` to Google Search Console.
 
-Do not describe the domain as connected until it actually resolves over HTTPS.
+The custom domain is stored in the Pages **settings**, not as a `CNAME` file in the
+repo — that is normal for Actions-based deploys. If the domain is ever cleared from
+settings after a deploy, re-enter it there rather than adding a `CNAME` file to
+`public/`.
 
 ### Vercel
 
