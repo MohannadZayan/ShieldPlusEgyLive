@@ -147,10 +147,37 @@ figure can leak into search results.
 
 Adding a locale key to one language and not the other is a TypeScript error.
 
-## 7. Images
+## 7. Images and video
 
 `public/media/` holds **only the client's own photography and studio footage**. No stock
 imagery is used anywhere on the site.
+
+Media is placed by what it actually shows — a clip is never dropped onto a page just to
+fill space:
+
+| File | Shows | Used on |
+|---|---|---|
+| `ppf-application.mp4` | Film sheet being laid over a Škoda | **Home hero** + PPF page |
+| `hero-poster.jpeg` | Still lifted from the frame above | Hero poster / LCP image |
+| `ppf-squeegee.mp4` | Film squeegeed down over the bumper | PPF page |
+| `washing-rinse.mp4` | Car being rinsed down | Washing page |
+| `washing-microfibre.jpeg` | Microfibre drying a wet window | Washing page |
+| `polishing-machine.jpeg` | Rotary polisher on a bonnet | Polishing page |
+| `finish-walkaround.mp4` | Finished, reflective paintwork | Polishing page |
+| `studio-bmw-x7.mp4`, `studio-1/2.mp4` | Studio B-roll | Gallery |
+| `work-*.jpeg` | Six finished cars | Gallery |
+
+All the client's footage is shot vertically on a phone. `MediaTile` renders every clip
+and photo in the same 3/4 portrait frame with `object-cover` so mixed rows stay even.
+
+Clips are `muted loop playsInline` with no controls — they are ambient B-roll, not a
+player. The hero's poster is a frame taken from the hero clip itself, so there is no
+visual jump when playback starts. If you swap the hero video, **regenerate the poster
+from the new clip.**
+
+> Frame extraction note: these MP4s carry rotation metadata. Browsers apply it;
+> GStreamer/`ffmpeg` frame dumps do not. Rotate an extracted frame −90° before using it
+> as a poster, or it will be sideways.
 
 **Film product cards are deliberately image-free.** No verified manufacturer photography
 was supplied for IKON, Pro Tech, Royal, Hexis, Dino Stek, Eagle or Adams. Rather than

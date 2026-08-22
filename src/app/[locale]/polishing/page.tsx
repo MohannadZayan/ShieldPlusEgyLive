@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { AppointmentForm } from "@/components/AppointmentForm";
 import { ClosingCta } from "@/components/ClosingCta";
 import { LayersIcon, ShieldIcon, SparkleIcon } from "@/components/Icons";
+import { MediaTile } from "@/components/MediaTile";
 import { Reveal } from "@/components/Reveal";
 import {
   GhostLink,
@@ -151,6 +152,20 @@ export default async function PolishingPage({
             {/* Manages expectations before the customer books. */}
             <Note>{t.polishing.honestNote}</Note>
           </div>
+        </div>
+
+        {/* The machine at work, and the finish it leaves. */}
+        <div className="mt-12 grid grid-cols-2 gap-3.5 sm:gap-5 lg:max-w-2xl">
+          <MediaTile
+            src="/media/polishing-machine.jpeg"
+            alt={
+              locale === "ar"
+                ? "استخدام مكينة تلميع بفوطة صوف على كابوت سيارة داخل المركز"
+                : "A rotary polisher with a wool pad being worked across a car's bonnet in the studio"
+            }
+            locale={locale}
+          />
+          <MediaTile src="/media/finish-walkaround.mp4" locale={locale} delay={90} />
         </div>
       </Section>
 

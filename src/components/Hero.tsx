@@ -19,10 +19,12 @@ export function Hero({ locale }: { locale: Locale }) {
 
   return (
     <section className="relative flex min-h-[100svh] items-end overflow-hidden">
-      {/* Background layer */}
+      {/* Background layer — a sheet of protection film going onto a car, which
+          is what the headline is actually about. The poster is a still lifted
+          from this same clip, so there's no visual jump when it starts. */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/media/work-bmw-x7.jpeg"
+          src="/media/hero-poster.jpeg"
           alt=""
           fill
           priority
@@ -30,9 +32,9 @@ export function Hero({ locale }: { locale: Locale }) {
           className="object-cover object-center"
         />
         <video
-          src="/media/studio-1.mp4"
-          poster="/media/work-bmw-x7.jpeg"
-          className="absolute inset-0 h-full w-full object-cover"
+          src="/media/ppf-application.mp4"
+          poster="/media/hero-poster.jpeg"
+          className="absolute inset-0 h-full w-full object-cover object-center"
           autoPlay
           muted
           loop

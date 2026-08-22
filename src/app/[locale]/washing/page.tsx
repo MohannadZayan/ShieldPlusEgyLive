@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { AppointmentForm } from "@/components/AppointmentForm";
 import { ClosingCta } from "@/components/ClosingCta";
 import { DropletIcon, SparkleIcon, SunIcon } from "@/components/Icons";
+import { MediaTile } from "@/components/MediaTile";
 import { Reveal } from "@/components/Reveal";
 import { PageHeader, Section, SectionHeading, WhatsAppButton } from "@/components/ui";
 import { BUSINESS, type Locale } from "@/lib/business";
@@ -110,11 +111,12 @@ export default async function WashingPage({
         </WhatsAppButton>
       </PageHeader>
 
-      {/* Pricing tiers */}
+      {/* Pricing tiers, with the wash itself shown alongside them */}
       <Section>
         <SectionHeading eyebrow={t.washing.eyebrow} title={t.washing.choose} />
 
-        <div className="mt-11 grid gap-5 sm:grid-cols-2 lg:max-w-3xl">
+        <div className="mt-11 grid gap-5 lg:grid-cols-[1.15fr_1fr] lg:gap-9">
+          <div className="grid gap-5 sm:grid-cols-2">
           {tiers.map((tier, i) => (
             <Reveal
               key={tier.name.en}
@@ -141,6 +143,22 @@ export default async function WashingPage({
               </div>
             </Reveal>
           ))}
+          </div>
+
+          {/* The wash in progress — the client's own studio footage. */}
+          <div className="grid grid-cols-2 gap-3.5 sm:gap-5">
+            <MediaTile src="/media/washing-rinse.mp4" locale={locale} delay={100} />
+            <MediaTile
+              src="/media/washing-microfibre.jpeg"
+              alt={
+                locale === "ar"
+                  ? "تجفيف زجاج جانبي مبلل بفوطة ميكروفايبر صفراء أثناء الغسيل"
+                  : "Drying a wet side window with a yellow microfibre cloth during the wash"
+              }
+              locale={locale}
+              delay={170}
+            />
+          </div>
         </div>
       </Section>
 

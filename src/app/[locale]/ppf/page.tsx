@@ -4,6 +4,7 @@ import { AppointmentForm } from "@/components/AppointmentForm";
 import { ClosingCta } from "@/components/ClosingCta";
 import { FilmCard } from "@/components/FilmCard";
 import { FilmComparison } from "@/components/FilmComparison";
+import { MediaTile } from "@/components/MediaTile";
 import { Reveal } from "@/components/Reveal";
 import {
   Note,
@@ -99,7 +100,12 @@ export default async function PpfPage({
           ))}
         </div>
 
-        <div className="mt-9">
+        {/* The fitting itself, next to the caveat about choosing a film. */}
+        <div className="mt-9 grid gap-5 lg:grid-cols-[1fr_1.3fr] lg:gap-9">
+          <div className="grid grid-cols-2 gap-3.5 sm:gap-5">
+            <MediaTile src="/media/ppf-application.mp4" locale={locale} />
+            <MediaTile src="/media/ppf-squeegee.mp4" locale={locale} delay={90} />
+          </div>
           <Note title={t.ppf.noteTitle}>{t.ppf.noteBody}</Note>
         </div>
       </Section>
