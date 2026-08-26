@@ -129,11 +129,26 @@ here and nowhere else.
 
 ### Seven films
 
-`FILMS` holds seven products. Scotch Guard has **no supplied warranty, thickness or
-film features** — those are `null`/`false` and render as em dashes. Because of that,
-site copy must not claim that *every* film is self-healing/nano-ceramic/anti-yellowing,
-or that every film carries a warranty. That wording was removed for exactly this
-reason; do not reintroduce it when adding products.
+`FILMS` holds seven products.
+
+**Scotch Guard is the one entry with manufacturer-sourced data rather than
+client-supplied data.** Its thickness (200 µm / 8 mil), self-healing and
+anti-yellowing come from 3M's published specs for Scotchgard™ PPF Pro Series, and the
+reasoning is documented inline on the entry. Two fields are deliberately left unset:
+
+- `nanoCeramic: false` — 3M Scotchgard uses a urethane clear coat, **not** a ceramic
+  topcoat. 3M sells ceramic coating separately, to go *over* the film. Setting this
+  true would be a fabricated technical claim.
+- `warrantyYears: null` — 3M's 10-year warranty requires a **3M Certified Installer**.
+  That has not been confirmed for this business, so publishing it could promise cover
+  the client cannot honour.
+
+It also assumes the client stocks the Pro Series variant; other Scotchgard variants
+differ in thickness. Confirm with the client and correct `thickness` if not.
+
+Because Scotch Guard is not nano-ceramic, site copy must not claim that *every* film
+is self-healing/nano-ceramic/anti-yellowing, or that every film carries a warranty.
+That wording was removed for exactly this reason; do not reintroduce it.
 
 ### The `null` rule
 

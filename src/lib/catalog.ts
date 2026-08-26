@@ -127,14 +127,34 @@ export const FILMS: Film[] = [
     slug: "scotch-guard",
     name: { en: "Scotch Guard", ar: "سكوتش جارد" },
     origin: { en: "American", ar: "أمريكي" },
-    // Warranty, thickness and film features were not supplied for this product.
-    // They stay null/false and render as an em dash — do not fill them in.
+    /**
+     * SOURCE NOTE — these three are MANUFACTURER-PUBLISHED figures for 3M
+     * Scotchgard™ Paint Protection Film Pro Series, not client-supplied
+     * numbers like the rest of this file:
+     *   - 8 mil / ~203 microns (rounded to 200 to match the catalogue's scale)
+     *   - self-healing formula
+     *   - warranty covers yellowing, so anti-yellowing holds
+     *
+     * ASSUMPTION: the client stocks the Pro Series variant. Other Scotchgard
+     * variants differ in thickness — if the client confirms a different one,
+     * correct `thickness` here.
+     *
+     * `nanoCeramic` stays FALSE deliberately. 3M Scotchgard uses a urethane
+     * clear coat, not a ceramic topcoat; 3M sells ceramic coating as a
+     * separate product applied over the film. Marking it true would be a
+     * fabricated technical claim.
+     *
+     * `warrantyYears` stays NULL deliberately. 3M's 10-year warranty is
+     * conditional on installation by a 3M Certified Installer, which has not
+     * been confirmed for this business — publishing it could promise cover
+     * the client cannot honour.
+     */
     warrantyYears: null,
     priceEGP: 90000,
-    thickness: null,
-    selfHealing: false,
+    thickness: 200,
+    selfHealing: true,
     nanoCeramic: false,
-    antiYellowing: false,
+    antiYellowing: true,
     notes: [],
   },
   {
