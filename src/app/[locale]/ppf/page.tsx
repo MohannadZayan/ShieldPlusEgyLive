@@ -23,14 +23,14 @@ export const generateStaticParams = localeParams;
 
 const COPY = {
   en: {
-    title: "Paint Protection Film — Six Options, Prices Published",
+    title: "Paint Protection Film — Seven Options, Prices Published",
     description:
-      "IKON, Pro Tech 7 & 10 Year, Royal, Dino Stek and Hexis paint protection film fitted in Dokki, Giza. All self-healing, nano-ceramic and anti-yellowing. Prices from 30,000 EGP.",
+      "IKON, Pro Tech 7 & 10 Year, Royal, Dino Stek, Scotch Guard and Hexis paint protection film fitted in Dokki and Nasr City. Published prices from 30,000 EGP.",
   },
   ar: {
-    title: "أفلام حماية الطلاء — ستة اختيارات بأسعار معلنة",
+    title: "أفلام حماية الطلاء — سبعة اختيارات بأسعار معلنة",
     description:
-      "أفلام حماية الطلاء IKON وبرو تك ٧ و١٠ سنوات ورويال ودينو ستيك وهيكسيس، تركيب في الدقي بالجيزة. كلها إصلاح ذاتي ونانو سيراميك ومقاومة للاصفرار. الأسعار تبدأ من ٣٠٬٠٠٠ ج.م.",
+      "أفلام حماية الطلاء IKON وبرو تك ٧ و١٠ سنوات ورويال ودينو ستيك وسكوتش جارد وهيكسيس، تركيب في الدقي ومدينة نصر. أسعار معلنة تبدأ من ٣٠٬٠٠٠ ج.م.",
   },
 } as const;
 
@@ -101,10 +101,12 @@ export default async function PpfPage({
         </div>
 
         {/* The fitting itself, next to the caveat about choosing a film. */}
-        <div className="mt-9 grid gap-5 lg:grid-cols-[1fr_1.3fr] lg:gap-9">
-          <div className="grid grid-cols-2 gap-3.5 sm:gap-5">
+        <div className="mt-9 grid gap-5 lg:grid-cols-[1.35fr_1fr] lg:gap-9">
+          <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-4 sm:gap-5">
             <MediaTile src="/media/ppf-application.mp4" locale={locale} />
-            <MediaTile src="/media/ppf-squeegee.mp4" locale={locale} delay={90} />
+            <MediaTile src="/media/ppf-squeegee.mp4" locale={locale} delay={70} />
+            <MediaTile src="/media/ppf-slip-solution.mp4" locale={locale} delay={140} />
+            <MediaTile src="/media/ppf-squeegee-mg.mp4" locale={locale} delay={210} />
           </div>
           <Note title={t.ppf.noteTitle}>{t.ppf.noteBody}</Note>
         </div>

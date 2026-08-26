@@ -73,6 +73,7 @@ const ITEMS: Item[] = [
     },
   },
   { src: "/media/studio-bmw-x7.mp4" },
+  { src: "/media/washing-rinse.mp4" },
   { src: "/media/studio-1.mp4" },
   { src: "/media/studio-2.mp4" },
 ];

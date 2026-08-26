@@ -52,7 +52,7 @@ export default async function WashingPage({
     "@type": "Service",
     serviceType: "Car washing and detailing",
     provider: { "@type": "AutoBodyShop", name: BUSINESS.name },
-    areaServed: { "@type": "City", name: BUSINESS.address.city.en },
+    areaServed: BUSINESS.branches.map((b) => ({ "@type": "City", name: b.city.en })),
     offers: [
       {
         "@type": "Offer",
@@ -145,9 +145,9 @@ export default async function WashingPage({
           ))}
           </div>
 
-          {/* The wash in progress — the client's own studio footage. */}
+          {/* Wax going on by hand, and the drying stage. */}
           <div className="grid grid-cols-2 gap-3.5 sm:gap-5">
-            <MediaTile src="/media/washing-rinse.mp4" locale={locale} delay={100} />
+            <MediaTile src="/media/wax-application.mp4" locale={locale} delay={100} />
             <MediaTile
               src="/media/washing-microfibre.jpeg"
               alt={

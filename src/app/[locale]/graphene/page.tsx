@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import { AppointmentForm } from "@/components/AppointmentForm";
 import { ClosingCta } from "@/components/ClosingCta";
+import { MediaTile } from "@/components/MediaTile";
 import { Reveal } from "@/components/Reveal";
 import {
   FeaturePill,
@@ -79,6 +80,8 @@ export default async function GraphenePage({
 
       <Section>
         <div className="grid gap-9 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
+          {/* Left column: the product, then the coating in the studio */}
+          <div className="flex flex-col gap-5">
           <Reveal className="rounded-2xl border border-border bg-card p-7 sm:p-9">
             <h2 className="font-display text-[24px] font-semibold tracking-wide uppercase">
               {GRAPHENE.name[locale]}
@@ -112,6 +115,15 @@ export default async function GraphenePage({
               {t.cta.quote}
             </WhatsAppButton>
           </Reveal>
+
+          {/* The coating itself, in the studio. */}
+          <MediaTile
+            src="/media/graphene-bottle.mp4"
+            locale={locale}
+            delay={90}
+            className="!aspect-[4/5]"
+          />
+          </div>
 
           <div className="flex flex-col gap-6">
             <Reveal className="rounded-2xl border border-border bg-card p-7 sm:p-9">

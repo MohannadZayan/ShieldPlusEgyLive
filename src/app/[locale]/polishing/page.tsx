@@ -60,7 +60,7 @@ export default async function PolishingPage({
     "@type": "Service",
     serviceType: "Car polishing and surface treatment",
     provider: { "@type": "AutoBodyShop", name: BUSINESS.name },
-    areaServed: { "@type": "City", name: BUSINESS.address.city.en },
+    areaServed: BUSINESS.branches.map((b) => ({ "@type": "City", name: b.city.en })),
     offers: {
       "@type": "Offer",
       price: POLISHING.priceEGP,

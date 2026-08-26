@@ -80,9 +80,9 @@ export const DICT = {
     services: {
       eyebrow: "What We Do",
       title: "Protection, applied properly.",
-      body: "Six paint protection films, ceramic thermal insulation, graphene coating, surface polishing and full detailing — all fitted in our Dokki studio.",
+      body: "Seven paint protection films, ceramic thermal insulation, graphene coating, surface polishing and full detailing — fitted at our Dokki and Nasr City branches.",
       ppfDesc:
-        "Six film options from value to original French, each self-healing, nano-ceramic and anti-yellowing.",
+        "Seven film options, from value choices to American and original French.",
       thermalDesc:
         "Eagle CM8060+ Ceramic Plus thermal insulation film, American original, with a 5-year warranty.",
       grapheneDesc:
@@ -95,9 +95,9 @@ export const DICT = {
 
     ppf: {
       eyebrow: "Paint Protection Film",
-      title: "Six films. One honest comparison.",
-      body: "Every film we fit is self-healing, nano-ceramic and anti-yellowing. What changes between them is thickness, warranty, origin and price. Compare them below and pick what fits your car and your budget.",
-      compareTitle: "Compare all six films",
+      title: "Seven films. One honest comparison.",
+      body: "What separates these films is origin, thickness, warranty and price. Compare them side by side below and pick what fits your car and your budget.",
+      compareTitle: "Compare all seven films",
       compareBody:
         "Scroll the table sideways on mobile, or open a card to see the full specification.",
       tableCaption: "Paint protection film comparison — price, warranty, thickness and features",
@@ -149,7 +149,7 @@ export const DICT = {
     gallery: {
       eyebrow: "Our Work",
       title: "Cars we've protected.",
-      body: "Photographed and filmed in our Dokki studio.",
+      body: "Photographed and filmed at our branches.",
       videoUnsupported: "Your browser does not support embedded video.",
     },
 
@@ -159,22 +159,22 @@ export const DICT = {
       p1Title: "Real prices, published",
       p1Body:
         "Our film prices are on this page. No 'call for pricing' games — you know the number before you come in.",
-      p2Title: "Six films, no pressure",
+      p2Title: "Seven films, no pressure",
       p2Body:
         "We stock value options and premium options. We'll tell you the difference and let you choose.",
       p3Title: "Warranty in writing",
       p3Body:
-        "Every film we fit carries the warranty stated on its card, including against yellowing.",
+        "Where a manufacturer warranty is supplied, it is printed on that film's card — including cover against yellowing.",
       p4Title: "One place, every step",
       p4Body:
-        "Protection, insulation, graphene, polishing and washing — all handled in the same studio.",
+        "Protection, insulation, graphene, polishing and washing — handled at both our Dokki and Nasr City branches.",
     },
 
     contact: {
       eyebrow: "Contact",
       title: "Talk to us on WhatsApp.",
       body: "The fastest way to reach us is WhatsApp. Send us your car and what you need, and we'll come back with a price and a time.",
-      visitTitle: "Visit the studio",
+      visitTitle: "Visit us",
       callTitle: "Call us",
       followTitle: "Follow our work",
       whatsappLine: "WhatsApp",
@@ -280,8 +280,8 @@ export const DICT = {
     services: {
       eyebrow: "بنعمل إيه",
       title: "حماية متركّبة صح.",
-      body: "ستة أفلام لحماية الطلاء، وعزل حراري سيراميك، وطبقة جرافين، وتلميع للسطح، وغسيل وتنظيف كامل — كله بيتعمل في مركزنا بالدقي.",
-      ppfDesc: "ستة اختيارات من الاقتصادي للفرنسي الأصلي، وكلها إصلاح ذاتي ونانو سيراميك ومقاومة للاصفرار.",
+      body: "سبعة أفلام لحماية الطلاء، وعزل حراري سيراميك، وطبقة جرافين، وتلميع للسطح، وغسيل وتنظيف كامل — في فرعي الدقي ومدينة نصر.",
+      ppfDesc: "سبعة اختيارات، من الاقتصادي للأمريكي والفرنسي الأصلي.",
       thermalDesc: "فيلم عزل حراري إيجل CM8060+ سيراميك بلس، أمريكي أصلي، بضمان ٥ سنوات.",
       grapheneDesc: "آدامز جرافين أدفانس، أمريكي، بضمان ٩ سنوات.",
       polishingDesc: "علاج للسطح مش مجرد لمعة بتروح بعد كام غسلة. بيرجّع السطح قبل ما تحميه.",
@@ -290,9 +290,9 @@ export const DICT = {
 
     ppf: {
       eyebrow: "أفلام حماية الطلاء",
-      title: "ستة أفلام. مقارنة واضحة.",
-      body: "كل فيلم بنركّبه فيه إصلاح ذاتي ونانو سيراميك ومقاومة للاصفرار. اللي بيختلف بينهم هو السماكة والضمان والمنشأ والسعر. قارن تحت واختار اللي يناسب عربيتك وميزانيتك.",
-      compareTitle: "قارن الستة أفلام",
+      title: "سبعة أفلام. مقارنة واضحة.",
+      body: "اللي بيفرق بين الأفلام دي هو المنشأ والسماكة والضمان والسعر. قارن بينهم تحت واختار اللي يناسب عربيتك وميزانيتك.",
+      compareTitle: "قارن السبعة أفلام",
       compareBody: "على الموبايل اسحب الجدول جنب، أو افتح الكارت علشان تشوف المواصفات كاملة.",
       tableCaption: "مقارنة أفلام حماية الطلاء — السعر والضمان والسماكة والمميزات",
       noteTitle: "ملاحظة عن الاختيار",
@@ -339,7 +339,7 @@ export const DICT = {
     gallery: {
       eyebrow: "شغلنا",
       title: "عربيات حميناها.",
-      body: "تصوير من داخل مركزنا بالدقي.",
+      body: "تصوير من داخل فروعنا.",
       videoUnsupported: "متصفحك لا يدعم تشغيل الفيديو.",
     },
 
@@ -348,19 +348,19 @@ export const DICT = {
       title: "إجابات واضحة، وتركيب مظبوط.",
       p1Title: "أسعار حقيقية ومعلنة",
       p1Body: "أسعار الأفلام عندنا مكتوبة في الصفحة دي. مفيش «كلّمنا علشان السعر» — تعرف الرقم قبل ما تيجي.",
-      p2Title: "ستة أفلام من غير ضغط",
+      p2Title: "سبعة أفلام من غير ضغط",
       p2Body: "عندنا اختيارات اقتصادية واختيارات ممتازة. هنقولك الفرق ونسيبك تختار.",
       p3Title: "ضمان مكتوب",
-      p3Body: "كل فيلم بنركّبه ليه الضمان المكتوب في كارت المنتج، وده شامل الضمان ضد الاصفرار.",
+      p3Body: "لو فيه ضمان من المصنّع، هتلاقيه مكتوب في كارت الفيلم نفسه، وده شامل الضمان ضد الاصفرار.",
       p4Title: "مكان واحد لكل الخطوات",
-      p4Body: "الحماية والعزل والجرافين والتلميع والغسيل — كله بيتعمل في نفس المركز.",
+      p4Body: "الحماية والعزل والجرافين والتلميع والغسيل — في فرعي الدقي ومدينة نصر.",
     },
 
     contact: {
       eyebrow: "اتصل بنا",
       title: "كلمنا على الواتساب.",
       body: "أسرع طريقة توصلنا هي الواتساب. ابعتلنا عربيتك وأنت محتاج إيه، وهنرد عليك بالسعر والميعاد.",
-      visitTitle: "زور المركز",
+      visitTitle: "زورنا",
       callTitle: "اتصل بينا",
       followTitle: "تابع شغلنا",
       whatsappLine: "واتساب",

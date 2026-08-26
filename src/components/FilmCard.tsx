@@ -36,8 +36,12 @@ export function FilmCard({
   const t = getDict(locale);
 
   // Position of this film's thickness within the catalogue range.
+  // Null thickness means the client never supplied one — show no gauge rather
+  // than a bar at an invented position.
   const gauge =
-    ((film.thickness - MIN_THICKNESS) / (MAX_THICKNESS - MIN_THICKNESS)) * 100;
+    film.thickness === null
+      ? null
+      : ((film.thickness - MIN_THICKNESS) / (MAX_THICKNESS - MIN_THICKNESS)) * 100;
 
   return (
     <Reveal
@@ -62,10 +66,12 @@ export function FilmCard({
       {/* Thickness gauge: a visual read on how this film sits in the range. */}
       <div className="mt-5" aria-hidden="true">
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-card-hi">
-          <div
-            className="h-full rounded-full bg-accent"
-            style={{ width: `${Math.max(8, Math.min(100, gauge))}%` }}
-          />
+          {gauge !== null && (
+            <div
+              className="h-full rounded-full bg-accent"
+              style={{ width: `${Math.max(8, Math.min(100, gauge))}%` }}
+            />
+          )}
         </div>
       </div>
 

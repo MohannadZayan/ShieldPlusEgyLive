@@ -63,7 +63,7 @@ export function Header({ locale }: { locale: Locale }) {
         >
           <LogoMark size={28} />
           <span className="font-display text-[19px] leading-none font-semibold tracking-wide">
-            SHIELD<span className="text-accent">+</span>
+            SHIELD<span className="text-sun">+</span>
             <span className="ms-0.5 align-top text-[13px] text-muted">EGY</span>
           </span>
         </Link>

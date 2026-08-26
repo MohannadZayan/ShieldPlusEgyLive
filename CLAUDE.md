@@ -3,11 +3,12 @@
 ## 1. Purpose
 
 A bilingual (English / Egyptian Arabic) customer-facing **lead-generation website** for
-ShieldPlusEGY, a paint protection film and detailing studio in Dokki, Giza.
+ShieldPlusEGY, a paint protection film and detailing studio with branches in Dokki,
+Giza and Nasr City, Cairo. Live at **https://shieldplusegy.com**.
 
 The site exists to let a customer:
 
-- explore the six paint protection films and compare them honestly;
+- explore the seven paint protection films and compare them honestly;
 - understand thermal insulation, graphene, polishing and washing;
 - see real prices and warranties before they call;
 - reach the business on WhatsApp in one tap.
@@ -36,7 +37,7 @@ package scope — raise it rather than building it.
 - **TypeScript** (strict)
 - **Tailwind CSS v4** — configured in CSS via `@theme`, not a JS config file
 - **next/font** — Oswald, Inter, Cairo, self-hosted at build time
-- **Deployment target:** Vercel
+- **Deployment:** static export, published to GitHub Pages at shieldplusegy.com
 
 Every page is statically prerendered for both locales (`● SSG` in the build output).
 No runtime server work happens on a page request.
@@ -49,7 +50,7 @@ src/
     [locale]/                  ← the root layout lives here (html/body/dir)
       layout.tsx               fonts, metadata, LocalBusiness JSON-LD, chrome
       page.tsx                 home
-      ppf/page.tsx             six films + comparison + request form
+      ppf/page.tsx             seven films + comparison + request form
       thermal-insulation/      Eagle CM8060+
       graphene/                Adams Graphene Advance (quote-only)
       polishing/               2,500 EGP surface treatment
@@ -107,17 +108,32 @@ automatically in `globals.css` under `[dir="rtl"]`.
 
 - Primary line / WhatsApp: **+20 115 090 4009**
 - Second line (voice only, not confirmed as WhatsApp): **+20 128 122 0433**
-- Address: **16 Tehran St., off Mossadak St., Dokki, Giza**
-- Instagram + TikTok: `@shieldplusegy`
+- **Two branches**, in `BUSINESS.branches` (first is treated as primary for
+  metadata and structured data):
+  - **Dokki** — 16 Tehran St., off Mossadak St., Dokki, Giza
+  - **Nasr City** — Shinzo Abe Axis, opposite the Jetour dealership, Nasr City, Cairo
+- Socials: Instagram, TikTok, Facebook, YouTube, X — all in `BUSINESS.social`,
+  rendered from one shared list in `components/SocialLinks.tsx`
 
-`siteUrl` is currently `https://shieldplusegy.com` — **a placeholder**. It drives
-canonical URLs, Open Graph and the sitemap, so update it the moment the real domain
-is known.
+Adding a branch to `BUSINESS.branches` automatically updates the footer, the contact
+page and the LocalBusiness structured data (one entry per branch). Neither branch has
+supplied opening hours — do not invent any.
+
+`siteUrl` is `https://shieldplusegy.com`, the live domain. It drives canonical URLs,
+Open Graph and the sitemap.
 
 ## 6. Product catalog — source of truth
 
 **`src/lib/catalog.ts`.** Prices, warranties, thicknesses and specifications live
 here and nowhere else.
+
+### Seven films
+
+`FILMS` holds seven products. Scotch Guard has **no supplied warranty, thickness or
+film features** — those are `null`/`false` and render as em dashes. Because of that,
+site copy must not claim that *every* film is self-healing/nano-ceramic/anti-yellowing,
+or that every film carries a warranty. That wording was removed for exactly this
+reason; do not reintroduce it when adding products.
 
 ### The `null` rule
 
@@ -160,8 +176,12 @@ fill space:
 | `ppf-application.mp4` | Film sheet being laid over a Škoda | **Home hero** + PPF page |
 | `hero-poster.jpeg` | Still lifted from the frame above | Hero poster / LCP image |
 | `ppf-squeegee.mp4` | Film squeegeed down over the bumper | PPF page |
+| `ppf-slip-solution.mp4` | Slip solution on a black MG during install | PPF page |
+| `ppf-squeegee-mg.mp4` | Red squeegee drawing film down | PPF page |
+| `graphene-bottle.mp4` | Graphene coating bottle in hand | Graphene page |
+| `wax-application.mp4` | Coating worked across a dark blue bonnet | Washing page (wax) |
+| `washing-rinse.mp4` | Car being rinsed down | Gallery |
 | `tint-windscreen.jpeg` | Film being squeegeed onto a windscreen | Thermal insulation page |
-| `washing-rinse.mp4` | Car being rinsed down | Washing page |
 | `washing-microfibre.jpeg` | Microfibre drying a wet window | Washing page |
 | `polishing-machine.jpeg` | Rotary polisher on a bonnet | Polishing page |
 | `finish-walkaround.mp4` | Finished, reflective paintwork | Polishing page |
@@ -323,11 +343,15 @@ If a value is unknown, render **—** and tell the client it is outstanding.
 
 ## 13. Still outstanding from the client
 
-- [ ] Real domain name (`BUSINESS.siteUrl` is a placeholder)
-- [ ] Opening hours (the contact page currently says to ask on WhatsApp)
+- [x] ~~Real domain~~ — shieldplusegy.com is live
+- [ ] Opening hours for **both branches** (the contact page says to ask on WhatsApp)
 - [ ] Confirmation that **+20 128 122 0433** is voice-only or also WhatsApp
-- [ ] Exact Google Maps pin (the current link is a search query, not a place ID)
-- [ ] Verified product photography for the six films, Eagle and Adams
+- [ ] Exact Google Maps pin for the **Dokki** branch (its link is still a search query,
+      not a place ID). Nasr City has a real pin.
+- [ ] Verified product photography for the seven films, Eagle and Adams
 - [ ] A price for Adams Graphene Advance, if it should be published
 - [ ] Royal's warranty period, if one exists
+- [ ] Scotch Guard's warranty, thickness and film features — currently all em dashes
+- [ ] Confirm whether `wax-application.mp4` shows waxing or graphene being applied:
+      it was filmed on the same car, in the same session, as `graphene-bottle.mp4`
 - [ ] Real customer reviews, if the client wants a reviews section

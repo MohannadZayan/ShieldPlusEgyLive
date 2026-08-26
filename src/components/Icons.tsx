@@ -37,10 +37,15 @@ export function ShieldIcon({ className, size = 24 }: IconProps) {
   );
 }
 
+/**
+ * Brand shield. Yellow (--color-sun) rather than the brand blue, per the
+ * client's mark. The tick is knocked out in the page background colour so it
+ * reads as a cut-out rather than a stroke.
+ */
 export function LogoMark({ className, size = 30 }: IconProps) {
   return (
     <svg {...base(size)} fill="none" className={className}>
-      <path d="M12 2 3 6v6c0 5.2 3.8 9.9 9 11 5.2-1.1 9-5.8 9-11V6l-9-4Z" fill="#3B76F0" />
+      <path d="M12 2 3 6v6c0 5.2 3.8 9.9 9 11 5.2-1.1 9-5.8 9-11V6l-9-4Z" fill="#F2A63B" />
       <path
         d="m9 12 2 2 4-4.5"
         stroke="#0A0C10"
@@ -202,6 +207,30 @@ export function TikTokIcon({ className, size = 20 }: IconProps) {
   return (
     <svg {...base(size)} fill="currentColor" className={className}>
       <path d="M16.5 3c.3 2.2 1.6 3.6 3.7 3.8v2.4c-1.2.1-2.4-.2-3.6-.9v5.9c0 4.3-3.9 7.1-7.6 5.6-2.3-.9-3.6-3.1-3.5-5.5.1-2.6 2.1-4.8 4.7-5.1.4 0 .8-.1 1.2 0v2.6c-.4 0-.7.1-1 .2-1.2.3-2 1.4-1.9 2.6.1 1.3 1.2 2.3 2.5 2.3 1.4 0 2.5-1.1 2.5-2.5V3h2.9Z" />
+    </svg>
+  );
+}
+
+export function FacebookIcon({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base(size)} fill="currentColor" className={className}>
+      <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z" />
+    </svg>
+  );
+}
+
+export function YouTubeIcon({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base(size)} fill="currentColor" className={className}>
+      <path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15.1V8.9l5.2 3.1-5.2 3.1Z" />
+    </svg>
+  );
+}
+
+export function XIcon({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base(size)} fill="currentColor" className={className}>
+      <path d="M17.5 3h3.1l-6.8 7.8L21.8 21h-6.2l-4.9-6.4L5.1 21H2l7.3-8.3L2.4 3h6.4l4.4 5.8L17.5 3Zm-1.1 16.1h1.7L7.7 4.8H5.9l10.5 14.3Z" />
     </svg>
   );
 }

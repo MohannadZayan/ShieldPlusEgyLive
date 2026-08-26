@@ -3,7 +3,8 @@ import Link from "next/link";
 import { BUSINESS, type Locale } from "@/lib/business";
 import { getDict } from "@/lib/i18n";
 import { href, serviceItems } from "@/lib/routes";
-import { InstagramIcon, LogoMark, PhoneIcon, PinIcon, TikTokIcon, WhatsAppIcon } from "./Icons";
+import { LogoMark, PhoneIcon, PinIcon, WhatsAppIcon } from "./Icons";
+import { SocialRow } from "./SocialLinks";
 import { waGeneral } from "@/lib/whatsapp";
 
 export function Footer({ locale }: { locale: Locale }) {
@@ -19,7 +20,7 @@ export function Footer({ locale }: { locale: Locale }) {
             <Link href={href(locale, "")} className="flex items-center gap-2.5">
               <LogoMark size={28} />
               <span className="font-display text-[19px] leading-none font-semibold tracking-wide">
-                SHIELD<span className="text-accent">+</span>
+                SHIELD<span className="text-sun">+</span>
                 <span className="ms-0.5 align-top text-[13px] text-muted">EGY</span>
               </span>
             </Link>
@@ -27,35 +28,7 @@ export function Footer({ locale }: { locale: Locale }) {
               {t.footer.tagline}
             </p>
 
-            <div className="mt-5 flex gap-2.5">
-              <a
-                href={BUSINESS.social.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${BUSINESS.name} Instagram`}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-border-hi hover:text-fg"
-              >
-                <InstagramIcon />
-              </a>
-              <a
-                href={BUSINESS.social.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${BUSINESS.name} TikTok`}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-border-hi hover:text-fg"
-              >
-                <TikTokIcon />
-              </a>
-              <a
-                href={waGeneral(locale)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${BUSINESS.name} WhatsApp`}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-whatsapp hover:text-whatsapp"
-              >
-                <WhatsAppIcon />
-              </a>
-            </div>
+            <SocialRow className="mt-5" />
           </div>
 
           {/* Services */}
@@ -103,17 +76,25 @@ export function Footer({ locale }: { locale: Locale }) {
                   <span className="force-ltr">{BUSINESS.phoneSecondary.display}</span>
                 </a>
               </li>
-              <li>
-                <a
-                  href={BUSINESS.address.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 text-fg/80 transition-colors hover:text-accent"
-                >
-                  <PinIcon size={17} className="mt-0.5 shrink-0" />
-                  <span>{BUSINESS.address.full[locale]}</span>
-                </a>
-              </li>
+              {/* One entry per branch, labelled so it's clear which is which. */}
+              {BUSINESS.branches.map((branch) => (
+                <li key={branch.id}>
+                  <a
+                    href={branch.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-2.5 text-fg/80 transition-colors hover:text-accent"
+                  >
+                    <PinIcon size={17} className="mt-0.5 shrink-0" />
+                    <span>
+                      <span className="block font-display text-[12px] tracking-wide text-muted uppercase">
+                        {branch.name[locale]}
+                      </span>
+                      {branch.full[locale]}
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

@@ -42,14 +42,14 @@ export function generateStaticParams() {
 
 const META = {
   en: {
-    title: "ShieldPlusEGY — Paint Protection Film & Thermal Insulation | Dokki, Giza",
+    title: "ShieldPlusEGY — Paint Protection Film & Thermal Insulation | Dokki & Nasr City",
     description:
-      "ShieldPlusEGY fits paint protection film, Eagle CM8060+ ceramic thermal insulation, Adams graphene protection, polishing and detailing in Dokki, Giza. Six PPF options with published prices and warranties.",
+      "ShieldPlusEGY fits paint protection film, Eagle CM8060+ ceramic thermal insulation, Adams graphene protection, polishing and detailing in Dokki, Giza and Nasr City, Cairo. Seven PPF options with published prices.",
   },
   ar: {
-    title: "شيلد بلس إيجيبت — أفلام حماية الطلاء والعزل الحراري | الدقي، الجيزة",
+    title: "شيلد بلس إيجيبت — أفلام حماية الطلاء والعزل الحراري | الدقي ومدينة نصر",
     description:
-      "شيلد بلس بتركّب أفلام حماية الطلاء، والعزل الحراري إيجل CM8060+ سيراميك، وحماية الجرافين من آدامز، والتلميع والغسيل في الدقي، الجيزة. ستة أفلام بأسعار وضمانات معلنة.",
+      "شيلد بلس بتركّب أفلام حماية الطلاء، والعزل الحراري إيجل CM8060+ سيراميك، وحماية الجرافين من آدامز، والتلميع والغسيل في الدقي بالجيزة ومدينة نصر بالقاهرة. سبعة أفلام بأسعار معلنة.",
   },
 } as const;
 
@@ -106,27 +106,30 @@ export default async function LocaleLayout({
   if (!isLocale(raw)) notFound();
   const locale: Locale = raw;
 
-  // LocalBusiness structured data. Deliberately omits openingHours,
-  // aggregateRating and priceRange — none of those have been supplied.
-  const jsonLd = {
+  // One AutoBodyShop entry per branch — the correct shape for a multi-location
+  // business. Deliberately omits openingHours, aggregateRating and priceRange:
+  // none of those have been supplied.
+  const jsonLd = BUSINESS.branches.map((branch) => ({
     "@context": "https://schema.org",
     "@type": "AutoBodyShop",
-    name: BUSINESS.name,
+    "@id": `${BUSINESS.siteUrl}/#${branch.id}`,
+    name: `${BUSINESS.name} — ${branch.name[locale]}`,
     legalName: BUSINESS.legalName[locale],
     description: META[locale].description,
     url: `${BUSINESS.siteUrl}/${locale}`,
     image: `${BUSINESS.siteUrl}/media/work-bmw-x7.jpeg`,
     telephone: "+201150904009",
+    hasMap: branch.mapsUrl,
     address: {
       "@type": "PostalAddress",
-      streetAddress: BUSINESS.address.street[locale],
-      addressLocality: BUSINESS.address.district[locale],
-      addressRegion: BUSINESS.address.city[locale],
+      streetAddress: branch.street[locale],
+      addressLocality: branch.district[locale],
+      addressRegion: branch.city[locale],
       addressCountry: "EG",
     },
-    sameAs: [BUSINESS.social.instagram, BUSINESS.social.tiktok],
-    areaServed: { "@type": "City", name: BUSINESS.address.city[locale] },
-  };
+    sameAs: Object.values(BUSINESS.social),
+    areaServed: { "@type": "City", name: branch.city[locale] },
+  }));
 
   return (
     <html

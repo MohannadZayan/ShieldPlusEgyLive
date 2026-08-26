@@ -30,23 +30,56 @@ export const BUSINESS = {
   /** Country code + number, digits only. Used to build every wa.me link. */
   whatsappNumber: "201150904009",
 
-  address: {
-    street: { en: "16 Tehran St., off Mossadak St.", ar: "١٦ شارع طهران، متفرع من شارع مصدق" },
-    district: { en: "Dokki", ar: "الدقي" },
-    city: { en: "Giza", ar: "الجيزة" },
-    country: { en: "Egypt", ar: "مصر" },
-    full: {
-      en: "16 Tehran St., off Mossadak St., Dokki, Giza, Egypt",
-      ar: "١٦ شارع طهران، متفرع من شارع مصدق، الدقي، الجيزة، مصر",
+  /**
+   * Branches, in the order they should be listed. The first is treated as the
+   * primary location for structured data and metadata.
+   *
+   * Opening hours have not been supplied for either branch — do not invent any.
+   */
+  branches: [
+    {
+      id: "dokki",
+      name: { en: "Dokki", ar: "الدقي" },
+      street: {
+        en: "16 Tehran St., off Mossadak St.",
+        ar: "١٦ شارع طهران، متفرع من شارع مصدق",
+      },
+      district: { en: "Dokki", ar: "الدقي" },
+      city: { en: "Giza", ar: "الجيزة" },
+      country: { en: "Egypt", ar: "مصر" },
+      full: {
+        en: "16 Tehran St., off Mossadak St., Dokki, Giza",
+        ar: "١٦ شارع طهران، متفرع من شارع مصدق، الدقي، الجيزة",
+      },
+      /** Search-based link — safe without a verified place ID. */
+      mapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=16+Tehran+Street+Mossadak+Dokki+Giza+Egypt",
     },
-    /** Search-based map link — safe without a verified place ID. */
-    mapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=16+Tehran+Street+Mossadak+Dokki+Giza+Egypt",
-  },
+    {
+      id: "nasr-city",
+      name: { en: "Nasr City", ar: "مدينة نصر" },
+      street: {
+        en: "Shinzo Abe Axis, opposite the Jetour dealership",
+        ar: "محور شينزو آبي، أمام توكيل جيتور",
+      },
+      district: { en: "Nasr City", ar: "مدينة نصر" },
+      city: { en: "Cairo", ar: "القاهرة" },
+      country: { en: "Egypt", ar: "مصر" },
+      full: {
+        en: "Shinzo Abe Axis, opposite the Jetour dealership, Nasr City, Cairo",
+        ar: "محور شينزو آبي، أمام توكيل جيتور، مدينة نصر، القاهرة",
+      },
+      /** Client-supplied Google Maps pin. */
+      mapsUrl: "https://maps.app.goo.gl/n9ghp24z6SqV3PQe8",
+    },
+  ],
 
   social: {
-    tiktok: "https://www.tiktok.com/@shieldplusegy",
+    facebook: "https://www.facebook.com/shieldplusegy/",
     instagram: "https://www.instagram.com/shieldplusegy",
+    tiktok: "https://www.tiktok.com/@shieldplusegy",
+    youtube: "https://youtube.com/@shieldplusegy",
+    x: "https://x.com/shieldplusuegy",
   },
 
   /**
@@ -60,3 +93,6 @@ export const BUSINESS = {
 } as const;
 
 export type Locale = "en" | "ar";
+
+/** The location used for metadata and primary structured data. */
+export const PRIMARY_BRANCH = BUSINESS.branches[0];

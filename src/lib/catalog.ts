@@ -25,8 +25,8 @@ export interface Film {
   warrantyYears: number | null;
   /** Price in EGP. `null` means quote-only. */
   priceEGP: number | null;
-  /** Film thickness, in the unit the client supplied (microns). */
-  thickness: number;
+  /** Film thickness in microns. `null` when the client supplied none. */
+  thickness: number | null;
   selfHealing: boolean;
   nanoCeramic: boolean;
   antiYellowing: boolean;
@@ -60,7 +60,7 @@ export const FILMS: Film[] = [
   {
     slug: "pro-tech-7",
     name: { en: "Pro Tech — 7 Year", ar: "برو تك — ٧ سنوات" },
-    origin: null,
+    origin: { en: "Made in China", ar: "صناعة صينية" },
     warrantyYears: 7,
     priceEGP: 32000,
     thickness: 180,
@@ -77,7 +77,7 @@ export const FILMS: Film[] = [
   {
     slug: "pro-tech-10",
     name: { en: "Pro Tech — 10 Year", ar: "برو تك — ١٠ سنوات" },
-    origin: null,
+    origin: { en: "Made in China", ar: "صناعة صينية" },
     warrantyYears: 10,
     priceEGP: 40000,
     thickness: 190,
@@ -109,7 +109,7 @@ export const FILMS: Film[] = [
   {
     slug: "dino-stek",
     name: { en: "Dino Stek", ar: "دينو ستيك" },
-    origin: null,
+    origin: { en: "American", ar: "أمريكي" },
     warrantyYears: 10,
     priceEGP: 80000,
     thickness: 180,
@@ -124,11 +124,25 @@ export const FILMS: Film[] = [
     ],
   },
   {
+    slug: "scotch-guard",
+    name: { en: "Scotch Guard", ar: "سكوتش جارد" },
+    origin: { en: "American", ar: "أمريكي" },
+    // Warranty, thickness and film features were not supplied for this product.
+    // They stay null/false and render as an em dash — do not fill them in.
+    warrantyYears: null,
+    priceEGP: 90000,
+    thickness: null,
+    selfHealing: false,
+    nanoCeramic: false,
+    antiYellowing: false,
+    notes: [],
+  },
+  {
     slug: "hexis",
     name: { en: "Hexis — Original French", ar: "هيكسيس — فرنسي أصلي" },
     origin: { en: "Original French", ar: "فرنسي أصلي" },
     warrantyYears: 10,
-    priceEGP: 90000,
+    priceEGP: 120000,
     thickness: 180,
     selfHealing: true,
     nanoCeramic: true,
@@ -221,8 +235,9 @@ export function formatWarranty(years: number | null, locale: Locale): string {
   return `${years} years`;
 }
 
-/** Renders a thickness value in the unit the client supplied. */
-export function formatThickness(thickness: number, locale: Locale): string {
+/** Renders a thickness, or an em dash when none was supplied. */
+export function formatThickness(thickness: number | null, locale: Locale): string {
+  if (thickness === null) return "—";
   const n = new Intl.NumberFormat(locale === "ar" ? "ar-EG" : "en-US").format(thickness);
   return locale === "ar" ? `${n} ميكرون` : `${n} microns`;
 }
