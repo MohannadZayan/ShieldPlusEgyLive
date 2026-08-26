@@ -70,7 +70,7 @@ export const BUSINESS = {
         ar: "محور شينزو آبي، أمام توكيل جيتور، مدينة نصر، القاهرة",
       },
       /** Client-supplied Google Maps pin. */
-      mapsUrl: "https://maps.app.goo.gl/n9ghp24z6SqV3PQe8",
+      mapsUrl: "https://maps.app.goo.gl/WokKd5RPhpjfd5XX6",
     },
   ],
 
