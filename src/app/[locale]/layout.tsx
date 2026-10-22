@@ -44,12 +44,12 @@ const META = {
   en: {
     title: "ShieldPlusEGY — Paint Protection Film & Thermal Insulation | Dokki & Nasr City",
     description:
-      "ShieldPlusEGY fits paint protection film, Eagle CM8060+ ceramic thermal insulation, Adams graphene protection, polishing and detailing in Dokki, Giza and Nasr City, Cairo. Seven PPF options with published prices.",
+      "ShieldPlusEGY fits paint protection film, Eagle CM8060+ ceramic thermal insulation, Adams graphene protection, polishing and detailing in Dokki, Giza and Nasr City, Cairo. Eight PPF options with published prices.",
   },
   ar: {
     title: "شيلد بلس إيجيبت — أفلام حماية الطلاء والعزل الحراري | الدقي ومدينة نصر",
     description:
-      "شيلد بلس بتركّب أفلام حماية الطلاء، والعزل الحراري إيجل CM8060+ سيراميك، وحماية الجرافين من آدامز، والتلميع والغسيل في الدقي بالجيزة ومدينة نصر بالقاهرة. سبعة أفلام بأسعار معلنة.",
+      "شيلد بلس بتركّب أفلام حماية الطلاء، والعزل الحراري إيجل CM8060+ سيراميك، وحماية الجرافين من آدامز، والتلميع والغسيل في الدقي بالجيزة ومدينة نصر بالقاهرة. ثمانية أفلام بأسعار معلنة.",
   },
 } as const;
 

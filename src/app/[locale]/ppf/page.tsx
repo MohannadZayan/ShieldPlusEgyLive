@@ -23,14 +23,14 @@ export const generateStaticParams = localeParams;
 
 const COPY = {
   en: {
-    title: "Paint Protection Film — Seven Options, Prices Published",
+    title: "Paint Protection Film — Eight Options, Prices Published",
     description:
-      "IKON, Pro Tech 7 & 10 Year, Royal, Dino Stek, Scotch Guard and Hexis paint protection film fitted in Dokki and Nasr City. Published prices from 30,000 EGP.",
+      "Pro Tech 5 & 7 Year, Royal, Shield Pro Prime & Ultra, Dino Stek, Scotch Guard and Hexis paint protection film fitted in Dokki and Nasr City. Published prices from 32,000 EGP.",
   },
   ar: {
-    title: "أفلام حماية الطلاء — سبعة اختيارات بأسعار معلنة",
+    title: "أفلام حماية الطلاء — ثمانية اختيارات بأسعار معلنة",
     description:
-      "أفلام حماية الطلاء IKON وبرو تك ٧ و١٠ سنوات ورويال ودينو ستيك وسكوتش جارد وهيكسيس، تركيب في الدقي ومدينة نصر. أسعار معلنة تبدأ من ٣٠٬٠٠٠ ج.م.",
+      "أفلام حماية الطلاء برو تك ٥ و٧ سنوات ورويال وشيلد برو برايم وألترا ودينو ستيك وسكوتش جارد وهيكسيس، تركيب في الدقي ومدينة نصر. أسعار معلنة تبدأ من ٣٢٬٠٠٠ ج.م.",
   },
 } as const;
 
@@ -107,6 +107,8 @@ export default async function PpfPage({
             <MediaTile src="/media/ppf-squeegee.mp4" locale={locale} delay={70} />
             <MediaTile src="/media/ppf-slip-solution.mp4" locale={locale} delay={140} />
             <MediaTile src="/media/ppf-squeegee-mg.mp4" locale={locale} delay={210} />
+            <MediaTile src="/media/ppf-squeegee-fender.mp4" locale={locale} delay={280} />
+            <MediaTile src="/media/ppf-slip-solution-bonnet.mp4" locale={locale} delay={350} />
           </div>
           <Note title={t.ppf.noteTitle}>{t.ppf.noteBody}</Note>
         </div>

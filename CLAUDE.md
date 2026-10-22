@@ -8,7 +8,7 @@ Giza and Nasr City, Cairo. Live at **https://shieldplusegy.com**.
 
 The site exists to let a customer:
 
-- explore the seven paint protection films and compare them honestly;
+- explore the eight paint protection films and compare them honestly;
 - understand thermal insulation, graphene, polishing and washing;
 - see real prices and warranties before they call;
 - reach the business on WhatsApp in one tap.
@@ -50,7 +50,7 @@ src/
     [locale]/                  ← the root layout lives here (html/body/dir)
       layout.tsx               fonts, metadata, LocalBusiness JSON-LD, chrome
       page.tsx                 home
-      ppf/page.tsx             seven films + comparison + request form
+      ppf/page.tsx             eight films + comparison + request form
       thermal-insulation/      Eagle CM8060+
       graphene/                Adams Graphene Advance (quote-only)
       polishing/               2,500 EGP surface treatment
@@ -127,9 +127,16 @@ Open Graph and the sitemap.
 **`src/lib/catalog.ts`.** Prices, warranties, thicknesses and specifications live
 here and nowhere else.
 
-### Seven films
+### Eight films
 
-`FILMS` holds seven products.
+`FILMS` holds eight products: Pro Tech 5 Year, Pro Tech 7 Year, Royal, Shield Pro
+Prime, Shield Pro Ultra, Dino Stek, Scotch Guard and Hexis.
+
+Shield Pro Prime and Shield Pro Ultra are both American, Gulf-specification and
+nano-ceramic, both with a 10-year warranty — Ultra additionally has self-healing;
+Prime does not. Neither has a client-supplied thickness, so `thickness` stays `null`
+for both. Neither has a confirmed anti-yellowing claim, so `antiYellowing` stays
+`false` for both — do not set it `true` without client confirmation.
 
 **Scotch Guard is the one entry with manufacturer-sourced data rather than
 client-supplied data.** Its thickness (200 µm / 8 mil), self-healing and
@@ -193,6 +200,8 @@ fill space:
 | `ppf-squeegee.mp4` | Film squeegeed down over the bumper | PPF page |
 | `ppf-slip-solution.mp4` | Slip solution on a black MG during install | PPF page |
 | `ppf-squeegee-mg.mp4` | Red squeegee drawing film down | PPF page |
+| `ppf-squeegee-fender.mp4` | Yellow squeegee working slip solution across a fender during film install | PPF page |
+| `ppf-slip-solution-bonnet.mp4` | Film draped over a bonnet, slip solution bubbles, showroom reflections | PPF page |
 | `graphene-bottle.mp4` | Graphene coating bottle in hand | Graphene page |
 | `wax-application.mp4` | Coating worked across a dark blue bonnet | Washing page (wax) |
 | `washing-rinse.mp4` | Car being rinsed down | Gallery |
@@ -216,7 +225,7 @@ from the new clip.**
 > as a poster, or it will be sideways.
 
 **Film product cards are deliberately image-free.** No verified manufacturer photography
-was supplied for IKON, Pro Tech, Royal, Hexis, Dino Stek, Eagle or Adams. Rather than
+was supplied for Pro Tech, Royal, Shield Pro, Hexis, Dino Stek, Eagle or Adams. Rather than
 pass a generic automotive photo off as a named product's image, the cards are
 typographic and spec-led.
 
@@ -363,10 +372,12 @@ If a value is unknown, render **—** and tell the client it is outstanding.
 - [ ] Confirmation that **+20 128 122 0433** is voice-only or also WhatsApp
 - [ ] Exact Google Maps pin for the **Dokki** branch (its link is still a search query,
       not a place ID). Nasr City has a real pin.
-- [ ] Verified product photography for the seven films, Eagle and Adams
+- [ ] Verified product photography for the eight films, Eagle and Adams
 - [ ] A price for Adams Graphene Advance, if it should be published
 - [ ] Royal's warranty period, if one exists
 - [ ] Scotch Guard's warranty, thickness and film features — currently all em dashes
+- [ ] Shield Pro Prime / Ultra thickness, and whether either carries an
+      anti-yellowing warranty — currently all em dashes / unset
 - [ ] Confirm whether `wax-application.mp4` shows waxing or graphene being applied:
       it was filmed on the same car, in the same session, as `graphene-bottle.mp4`
 - [ ] Real customer reviews, if the client wants a reviews section

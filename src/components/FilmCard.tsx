@@ -19,10 +19,9 @@ const MAX_THICKNESS = 200;
  * Product card for a paint protection film.
  *
  * NOTE ON IMAGERY: no verified manufacturer product photography was supplied
- * for any of the six films. Rather than pass a generic automotive photo off as
- * an IKON / Pro Tech / Royal / Hexis / Dino Stek product shot, these cards are
- * typographic and spec-led. Drop a real product image in when the client
- * supplies one.
+ * for any of the eight films. Rather than pass a generic automotive photo off
+ * as a named product's shot, these cards are typographic and spec-led. Drop a
+ * real product image in when the client supplies one.
  */
 export function FilmCard({
   film,

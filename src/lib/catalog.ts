@@ -34,26 +34,22 @@ export interface Film {
   notes: Localized[];
 }
 
-/** The six paint protection films, in ascending price order. */
+/** The eight paint protection films, in ascending price order. */
 export const FILMS: Film[] = [
   {
-    slug: "ikon",
-    name: { en: "IKON", ar: "IKON" },
+    slug: "pro-tech-5",
+    name: { en: "Pro Tech — 5 Year", ar: "برو تك — ٥ سنوات" },
     origin: { en: "Made in China", ar: "صناعة صينية" },
-    warrantyYears: 7,
-    priceEGP: 30000,
-    thickness: 170,
+    warrantyYears: 5,
+    priceEGP: 32000,
+    thickness: 180,
     selfHealing: true,
     nanoCeramic: true,
     antiYellowing: true,
     notes: [
       {
-        en: "Multi-layer film construction",
-        ar: "تركيب متعدد الطبقات",
-      },
-      {
-        en: "Covered by a warranty against yellowing",
-        ar: "مغطى بضمان ضد الاصفرار",
+        en: "5-year anti-yellowing warranty",
+        ar: "ضمان ضد الاصفرار لمدة ٥ سنوات",
       },
     ],
   },
@@ -62,23 +58,6 @@ export const FILMS: Film[] = [
     name: { en: "Pro Tech — 7 Year", ar: "برو تك — ٧ سنوات" },
     origin: { en: "Made in China", ar: "صناعة صينية" },
     warrantyYears: 7,
-    priceEGP: 32000,
-    thickness: 180,
-    selfHealing: true,
-    nanoCeramic: true,
-    antiYellowing: true,
-    notes: [
-      {
-        en: "7-year anti-yellowing warranty",
-        ar: "ضمان ضد الاصفرار لمدة ٧ سنوات",
-      },
-    ],
-  },
-  {
-    slug: "pro-tech-10",
-    name: { en: "Pro Tech — 10 Year", ar: "برو تك — ١٠ سنوات" },
-    origin: { en: "Made in China", ar: "صناعة صينية" },
-    warrantyYears: 10,
     priceEGP: 40000,
     thickness: 190,
     selfHealing: true,
@@ -105,6 +84,30 @@ export const FILMS: Film[] = [
         ar: "حماية ضد أشعة الشمس والإشعاع",
       },
     ],
+  },
+  {
+    slug: "shield-pro-prime",
+    name: { en: "Shield Pro — Prime", ar: "شيلد برو — برايم" },
+    origin: { en: "American — Gulf specification", ar: "أمريكي — مواصفات خليجية" },
+    warrantyYears: 10,
+    priceEGP: 55000,
+    thickness: null,
+    selfHealing: false,
+    nanoCeramic: true,
+    antiYellowing: false,
+    notes: [],
+  },
+  {
+    slug: "shield-pro-ultra",
+    name: { en: "Shield Pro — Ultra", ar: "شيلد برو — ألترا" },
+    origin: { en: "American — Gulf specification", ar: "أمريكي — مواصفات خليجية" },
+    warrantyYears: 10,
+    priceEGP: 60000,
+    thickness: null,
+    selfHealing: true,
+    nanoCeramic: true,
+    antiYellowing: false,
+    notes: [],
   },
   {
     slug: "dino-stek",

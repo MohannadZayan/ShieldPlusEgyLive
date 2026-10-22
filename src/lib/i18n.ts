@@ -80,9 +80,9 @@ export const DICT = {
     services: {
       eyebrow: "What We Do",
       title: "Protection, applied properly.",
-      body: "Seven paint protection films, ceramic thermal insulation, graphene coating, surface polishing and full detailing — fitted at our Dokki and Nasr City branches.",
+      body: "Eight paint protection films, ceramic thermal insulation, graphene coating, surface polishing and full detailing — fitted at our Dokki and Nasr City branches.",
       ppfDesc:
-        "Seven film options, from value choices to American and original French.",
+        "Eight film options, from value choices to American and original French.",
       thermalDesc:
         "Eagle CM8060+ Ceramic Plus thermal insulation film, American original, with a 5-year warranty.",
       grapheneDesc:
@@ -95,9 +95,9 @@ export const DICT = {
 
     ppf: {
       eyebrow: "Paint Protection Film",
-      title: "Seven films. One honest comparison.",
+      title: "Eight films. One honest comparison.",
       body: "What separates these films is origin, thickness, warranty and price. Compare them side by side below and pick what fits your car and your budget.",
-      compareTitle: "Compare all seven films",
+      compareTitle: "Compare all eight films",
       compareBody:
         "Scroll the table sideways on mobile, or open a card to see the full specification.",
       tableCaption: "Paint protection film comparison — price, warranty, thickness and features",
@@ -159,7 +159,7 @@ export const DICT = {
       p1Title: "Real prices, published",
       p1Body:
         "Our film prices are on this page. No 'call for pricing' games — you know the number before you come in.",
-      p2Title: "Seven films, no pressure",
+      p2Title: "Eight films, no pressure",
       p2Body:
         "We stock value options and premium options. We'll tell you the difference and let you choose.",
       p3Title: "Warranty in writing",
@@ -280,8 +280,8 @@ export const DICT = {
     services: {
       eyebrow: "بنعمل إيه",
       title: "حماية متركّبة صح.",
-      body: "سبعة أفلام لحماية الطلاء، وعزل حراري سيراميك، وطبقة جرافين، وتلميع للسطح، وغسيل وتنظيف كامل — في فرعي الدقي ومدينة نصر.",
-      ppfDesc: "سبعة اختيارات، من الاقتصادي للأمريكي والفرنسي الأصلي.",
+      body: "ثمانية أفلام لحماية الطلاء، وعزل حراري سيراميك، وطبقة جرافين، وتلميع للسطح، وغسيل وتنظيف كامل — في فرعي الدقي ومدينة نصر.",
+      ppfDesc: "ثمانية اختيارات، من الاقتصادي للأمريكي والفرنسي الأصلي.",
       thermalDesc: "فيلم عزل حراري إيجل CM8060+ سيراميك بلس، أمريكي أصلي، بضمان ٥ سنوات.",
       grapheneDesc: "آدامز جرافين أدفانس، أمريكي، بضمان ٩ سنوات.",
       polishingDesc: "علاج للسطح مش مجرد لمعة بتروح بعد كام غسلة. بيرجّع السطح قبل ما تحميه.",
@@ -290,9 +290,9 @@ export const DICT = {
 
     ppf: {
       eyebrow: "أفلام حماية الطلاء",
-      title: "سبعة أفلام. مقارنة واضحة.",
+      title: "ثمانية أفلام. مقارنة واضحة.",
       body: "اللي بيفرق بين الأفلام دي هو المنشأ والسماكة والضمان والسعر. قارن بينهم تحت واختار اللي يناسب عربيتك وميزانيتك.",
-      compareTitle: "قارن السبعة أفلام",
+      compareTitle: "قارن الثمانية أفلام",
       compareBody: "على الموبايل اسحب الجدول جنب، أو افتح الكارت علشان تشوف المواصفات كاملة.",
       tableCaption: "مقارنة أفلام حماية الطلاء — السعر والضمان والسماكة والمميزات",
       noteTitle: "ملاحظة عن الاختيار",
@@ -348,7 +348,7 @@ export const DICT = {
       title: "إجابات واضحة، وتركيب مظبوط.",
       p1Title: "أسعار حقيقية ومعلنة",
       p1Body: "أسعار الأفلام عندنا مكتوبة في الصفحة دي. مفيش «كلّمنا علشان السعر» — تعرف الرقم قبل ما تيجي.",
-      p2Title: "سبعة أفلام من غير ضغط",
+      p2Title: "ثمانية أفلام من غير ضغط",
       p2Body: "عندنا اختيارات اقتصادية واختيارات ممتازة. هنقولك الفرق ونسيبك تختار.",
       p3Title: "ضمان مكتوب",
       p3Body: "لو فيه ضمان من المصنّع، هتلاقيه مكتوب في كارت الفيلم نفسه، وده شامل الضمان ضد الاصفرار.",
