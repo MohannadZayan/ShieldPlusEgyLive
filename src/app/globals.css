@@ -50,6 +50,10 @@ html {
   /* Header height + breathing room, so anchor targets aren't hidden. */
   scroll-padding-top: 5.5rem;
   -webkit-text-size-adjust: 100%;
+  /* iOS Safari scrolls the <html> box, not <body> — the guard below on body
+     alone doesn't stop horizontal pan on iPhone even though it works on
+     desktop browsers. Needs to be on both. */
+  overflow-x: hidden;
 }
 
 body {
